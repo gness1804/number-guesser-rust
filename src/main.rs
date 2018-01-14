@@ -12,26 +12,31 @@ fn main() {
 
     println!("The secret number is: {}", secret_number);
 
-    println!("Please input your guess.");
+    loop {
+        println!("Please input your guess.");
 
-    let mut guess: String = String::new();
-    // equivalent of `let guess = ''` in JS
-    // as with above example, I added the type annotation that isn't in the tutorial in order to practice it
+        let mut guess: String = String::new();
+        // equivalent of `let guess = ''` in JS
+        // as with above example, I added the type annotation that isn't in the tutorial in order to practice it
 
-    io::stdin().read_line(&mut guess)
-        .expect("Failed to read line");
-        // like `.catch(() -> {console.log('Failed to read line')})` in JS
+        io::stdin().read_line(&mut guess)
+            .expect("Failed to read line");
+            // like `.catch(() -> {console.log('Failed to read line')})` in JS
 
-    let guess: u32 = guess.trim().parse()
-        .expect("Please type a number!");
+        let guess: u32 = guess.trim().parse()
+            .expect("Please type a number!");
 
-    println!("You guessed: {}", guess);
-    // JS equivalent: `console.log(`You guessed: ${guess}`);`
+        println!("You guessed: {}", guess);
+        // JS equivalent: `console.log(`You guessed: ${guess}`);`
 
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => println!("You win!"),
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            }
+        }
+        // sort of like a JS switch statement, I think
     }
-    // sort of like a JS switch statement, I think
 }
