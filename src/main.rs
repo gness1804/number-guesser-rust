@@ -10,7 +10,8 @@ fn main() {
     let secret_number: u32 = rand::thread_rng().gen_range(1, 101);
     //added the `: u32` that isn't in the tutorial in order to practice annotating type
 
-    println!("The secret number is: {}", secret_number);
+    // println!("The secret number is: {}", secret_number);
+    // comment this out so that the game actually makes sense
 
     loop {
         println!("Please input your guess.");
@@ -31,6 +32,7 @@ fn main() {
             },
         };
     // added error handling not in the tutorial to tell the user to enter a number
+    // once I know how to do if statements, I'd like a conditional here saying that if the user types 'q' or 'quit', then the program should exit; for all other non-numbers, continue
 
         println!("You guessed: {}", guess);
         // JS equivalent: `console.log(`You guessed: ${guess}`);`
