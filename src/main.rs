@@ -25,9 +25,12 @@ fn main() {
 
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
-            Err(_) => continue,
+            Err(_) => {
+                println!("Oops! You need to enter a number!");
+                continue;
+            },
         };
-
+    // added error handling not in the tutorial to tell the user to enter a number
 
         println!("You guessed: {}", guess);
         // JS equivalent: `console.log(`You guessed: ${guess}`);`
