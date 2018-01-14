@@ -23,8 +23,11 @@ fn main() {
             .expect("Failed to read line");
             // like `.catch(() -> {console.log('Failed to read line')})` in JS
 
-        let guess: u32 = guess.trim().parse()
-            .expect("Please type a number!");
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
+
 
         println!("You guessed: {}", guess);
         // JS equivalent: `console.log(`You guessed: ${guess}`);`
